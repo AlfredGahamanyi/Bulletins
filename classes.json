@@ -1,0 +1,2579 @@
+[
+ {
+  "code": "1ere_electricite",
+  "nom_classe": "1ère Humanité Technique / Électricité",
+  "option": "Electricite",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE 1ÈRE HUMANITÉ TECHNIQUE / ÉLECTRICITÉ",
+   "reference": "IGE/P.S/100",
+   "reference_table": null,
+   "echoue": true,
+   "date_dans_boite": false,
+   "interdiction": false,
+   "signature_ligne": [
+    "Signature de l'élève",
+    "Sceau de l'école"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Éducation à la vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Éd. Civique et Morale",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Techno Méca",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Électronique numérique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 40,
+    "branches": [
+     {
+      "nom": "Dessin Élec",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Dessin Industriel",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Mécanique Générale",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Élec Générale",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Techno Élec",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 50,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 100,
+    "branches": [
+     {
+      "nom": "Atelier Élec",
+      "max": 100,
+      "comp": false
+     },
+     {
+      "nom": "Atelier Méca",
+      "max": 100,
+      "comp": false
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 690,
+  "max_composition": 980,
+  "max_semestre": 2360,
+  "max_annuel": 4720
+ },
+ {
+  "code": "1ere_nutrition",
+  "nom_classe": "1ère Année Nutrition",
+  "option": "Nutrition",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'ENSEIGNEMENT PRIMAIRE, SECONDAIRE",
+    "ET  TECHNIQUE"
+   ],
+   "titre": "BULLETIN DE LA 1ère ANNEE NUTRITION",
+   "reference": "IGE/P.S/011",
+   "reference_table": null,
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education Civique et Morale",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education à la vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education physique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Hygiène alimentaire",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Nutrition générale",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Technologie alimentaire",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Biologie",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 40,
+    "branches": [
+     {
+      "nom": "Agriculture",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Pratique professionnelle",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 50,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 390,
+  "max_composition": 780,
+  "max_semestre": 1560,
+  "max_annuel": 3120
+ },
+ {
+  "code": "2eme_nutrition",
+  "nom_classe": "2ème Année Nutrition",
+  "option": "Nutrition",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'ENSEIGNEMENT PRIMAIRE, SECONDAIRE",
+    "ET  TECHNIQUE"
+   ],
+   "titre": "BULLETIN DE LA 2ème ANNEE NUTRITION",
+   "reference": "IGE/P.S/011",
+   "reference_table": null,
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education Civique et Morale",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education à la vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education physique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Hygiène alimentaire",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Technologie culinaire",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education nutritionnelle",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Pratique professionnelle",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Biologie",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Zootechnie (élevage)",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Nutrition générale",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Technologie alimentaire",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Pathologie de la nutrition",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 50,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 440,
+  "max_composition": 880,
+  "max_semestre": 1760,
+  "max_annuel": 3520
+ },
+ {
+  "code": "3eme_nutrition",
+  "nom_classe": "3ème Année Humanités Nutrition",
+  "option": "Nutrition",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'ENSEIGNEMENT PRIMAIRE, SECONDAIRE",
+    "ET  TECHNIQUE"
+   ],
+   "titre": "BULLETIN DE LA 3ème ANNEE HUMANITES NUTRITION",
+   "reference": "IGE/P.S./107",
+   "reference_table": "IGE/P.S./102",
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education à la Vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Ed. civ. & morale",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education physique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Economie alimentaire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Enquête nutritionnelle",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Entrepreneuriat",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Microbiologie alimentaire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Anatomie & physiologie",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Biologie",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Diététique",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Technologie culinaire",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 40,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 100,
+    "branches": [
+     {
+      "nom": "Pratique professionnelle",
+      "max": 100,
+      "comp": false
+     },
+     {
+      "nom": "Stage",
+      "max": 100,
+      "comp": false
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 610,
+  "max_composition": 820,
+  "max_semestre": 2040,
+  "max_annuel": 4080
+ },
+ {
+  "code": "4eme_nutrition",
+  "nom_classe": "4ème Année Humanité Nutrition",
+  "option": "Nutrition",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'ENSEIGNEMENT PRIMAIRE, SECONDAIRE",
+    "ET  TECHNIQUE"
+   ],
+   "titre": "BULLETIN DE LA 4ème ANNEE HUMANITE NUTRITION",
+   "reference": "IGE/P.S/113",
+   "reference_table": null,
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": "etat"
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education à la vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Ed. civ. & morale",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Entreprenariat",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Anatomie & Physiologie",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Diététique",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Français",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Technologie culinaire",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 100,
+    "branches": [
+     {
+      "nom": "Pratique professionnelle",
+      "max": 100,
+      "comp": false
+     },
+     {
+      "nom": "Stage",
+      "max": 100,
+      "comp": false
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 480,
+  "max_composition": 560,
+  "max_semestre": 1520,
+  "max_annuel": 3040
+ },
+ {
+  "code": "7eme_edubase_a",
+  "nom_classe": "7e Année du Cycle Terminal de l'Éducation de Base — A",
+  "option": "Education de base",
+  "type": "domaine",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE 7E ANNÉE DU CYCLE TERMINAL DE L'ÉDUCATION DE BASE — A",
+   "reference": "IGE/P.S/100",
+   "reference_table": null,
+   "echoue": true,
+   "date_dans_boite": false,
+   "interdiction": false,
+   "signature_ligne": [
+    "Signature de l'élève",
+    "Sceau de l'école"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "Sous domaine des mathématiques",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Algèbre",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Arithmétique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géométrie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Statistique",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences de la Vie et de la Terre",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anatomie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Botanique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Zoologie",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences Physiques, Technologie et TIC",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Sciences Phys",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Technologie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Tech d'Info & Com (TIC)",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "DOMAINE DES LANGUES",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Français",
+      "max": 70,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES LANGUES"
+   },
+   {
+    "nom": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Educ à la vie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education civ. Et Mor.",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL"
+   },
+   {
+    "nom": "DOMAINE DES ARTS",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Dessin",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Musique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES ARTS"
+   },
+   {
+    "nom": "DOMAINE DU DEVELOPPEMENT PERSONNEL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Educ. Phys",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DU DEVELOPPEMENT PERSONNEL"
+   }
+  ],
+  "max_periode": 400,
+  "max_composition": 800,
+  "max_semestre": 1600,
+  "max_annuel": 3200
+ },
+ {
+  "code": "7eme_edubase_b",
+  "nom_classe": "7e Année du Cycle Terminal de l'Éducation de Base — B",
+  "option": "Education de base",
+  "type": "domaine",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE 7E ANNÉE DU CYCLE TERMINAL DE L'ÉDUCATION DE BASE — B",
+   "reference": "IGE/P.S/100",
+   "reference_table": null,
+   "echoue": true,
+   "date_dans_boite": false,
+   "interdiction": false,
+   "signature_ligne": [
+    "Signature de l'élève",
+    "Sceau de l'école"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "Sous domaine des mathématiques",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Algèbre",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Arithmétique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géométrie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Statistique",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences de la Vie et de la Terre",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anatomie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Botanique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Zoologie",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences Physiques, Technologie et TIC",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Sciences Phys",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Technologie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Tech d'Info & Com (TIC)",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "DOMAINE DES LANGUES",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Français",
+      "max": 70,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES LANGUES"
+   },
+   {
+    "nom": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Educ à la vie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education civ. Et Mor.",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL"
+   },
+   {
+    "nom": "DOMAINE DES ARTS",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Dessin",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Musique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES ARTS"
+   },
+   {
+    "nom": "DOMAINE DU DEVELOPPEMENT PERSONNEL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Educ. Phys",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DU DEVELOPPEMENT PERSONNEL"
+   }
+  ],
+  "max_periode": 400,
+  "max_composition": 800,
+  "max_semestre": 1600,
+  "max_annuel": 3200
+ },
+ {
+  "code": "7eme_edubase_c",
+  "nom_classe": "7e Année du Cycle Terminal de l'Éducation de Base — C",
+  "option": "Education de base",
+  "type": "domaine",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE 7E ANNÉE DU CYCLE TERMINAL DE L'ÉDUCATION DE BASE — C",
+   "reference": "IGE/P.S/100",
+   "reference_table": null,
+   "echoue": true,
+   "date_dans_boite": false,
+   "interdiction": false,
+   "signature_ligne": [
+    "Signature de l'élève",
+    "Sceau de l'école"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "Sous domaine des mathématiques",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Algèbre",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Arithmétique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géométrie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Statistique",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences de la Vie et de la Terre",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anatomie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Botanique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Zoologie",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences Physiques, Technologie et TIC",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Sciences Phys",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Technologie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Tech d'Info & Com (TIC)",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "DOMAINE DES LANGUES",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Français",
+      "max": 70,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES LANGUES"
+   },
+   {
+    "nom": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Educ à la vie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education civ. Et Mor.",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL"
+   },
+   {
+    "nom": "DOMAINE DES ARTS",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Dessin",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Musique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES ARTS"
+   },
+   {
+    "nom": "DOMAINE DU DEVELOPPEMENT PERSONNEL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Educ. Phys",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DU DEVELOPPEMENT PERSONNEL"
+   }
+  ],
+  "max_periode": 400,
+  "max_composition": 800,
+  "max_semestre": 1600,
+  "max_annuel": 3200
+ },
+ {
+  "code": "8eme_edubase_a",
+  "nom_classe": "8e Année du Cycle Terminal de l'Éducation de Base — A",
+  "option": "Education de base",
+  "type": "domaine",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE 8E ANNÉE DU CYCLE TERMINAL DE L'ÉDUCATION DE BASE — A",
+   "reference": "IGE/P.S/100",
+   "reference_table": null,
+   "echoue": true,
+   "date_dans_boite": false,
+   "interdiction": false,
+   "signature_ligne": [
+    "Signature de l'élève",
+    "Sceau de l'école"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "Sous domaine des mathématiques",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Arithmétique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Statistique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géométrie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Algèbre",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences de la Vie et de la Terre",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anatomie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Botanique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Zoologie",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences Physiques, Technologie et TIC",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Chimie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Sciences Physiques",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Technologie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Tech d'Info & Com (TIC)",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "DOMAINE DES LANGUES",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES LANGUES"
+   },
+   {
+    "nom": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Educ à la vie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education civ. Et Mor.",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL"
+   },
+   {
+    "nom": "DOMAINE DES ARTS",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Dessin",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Musique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES ARTS"
+   },
+   {
+    "nom": "DOMAINE DU DEVELOPPEMENT PERSONNEL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Educ. Phys",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DU DEVELOPPEMENT PERSONNEL"
+   }
+  ],
+  "max_periode": 410,
+  "max_composition": 820,
+  "max_semestre": 1640,
+  "max_annuel": 3280
+ },
+ {
+  "code": "8eme_edubase_b",
+  "nom_classe": "8e Année du Cycle Terminal de l'Éducation de Base — B",
+  "option": "Education de base",
+  "type": "domaine",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE 8E ANNÉE DU CYCLE TERMINAL DE L'ÉDUCATION DE BASE — B",
+   "reference": "IGE/P.S/100",
+   "reference_table": null,
+   "echoue": true,
+   "date_dans_boite": false,
+   "interdiction": false,
+   "signature_ligne": [
+    "Signature de l'élève",
+    "Sceau de l'école"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "Sous domaine des mathématiques",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Arithmétique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Statistique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géométrie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Algèbre",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences de la Vie et de la Terre",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anatomie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Botanique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Zoologie",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences Physiques, Technologie et TIC",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Chimie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Sciences Physiques",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Technologie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Tech d'Info & Com (TIC)",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "DOMAINE DES LANGUES",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES LANGUES"
+   },
+   {
+    "nom": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Educ à la vie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education civ. Et Mor.",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL"
+   },
+   {
+    "nom": "DOMAINE DES ARTS",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Dessin",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Musique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES ARTS"
+   },
+   {
+    "nom": "DOMAINE DU DEVELOPPEMENT PERSONNEL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Educ. Phys",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DU DEVELOPPEMENT PERSONNEL"
+   }
+  ],
+  "max_periode": 410,
+  "max_composition": 820,
+  "max_semestre": 1640,
+  "max_annuel": 3280
+ },
+ {
+  "code": "8eme_edubase_c",
+  "nom_classe": "8e Année du Cycle Terminal de l'Éducation de Base — C",
+  "option": "Education de base",
+  "type": "domaine",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE 8E ANNÉE DU CYCLE TERMINAL DE L'ÉDUCATION DE BASE — C",
+   "reference": "IGE/P.S/100",
+   "reference_table": null,
+   "echoue": true,
+   "date_dans_boite": false,
+   "interdiction": false,
+   "signature_ligne": [
+    "Signature de l'élève",
+    "Sceau de l'école"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "Sous domaine des mathématiques",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Arithmétique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Statistique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Géométrie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Algèbre",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences de la Vie et de la Terre",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anatomie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Botanique",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Zoologie",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "Sous domaine des Sciences Physiques, Technologie et TIC",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Chimie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Sciences Physiques",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Technologie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Tech d'Info & Com (TIC)",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES SCIENCES"
+   },
+   {
+    "nom": "DOMAINE DES LANGUES",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES LANGUES"
+   },
+   {
+    "nom": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Educ à la vie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education civ. Et Mor.",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DE L'UNIVERS SOCIAL ET ENVIRONNEMENTAL"
+   },
+   {
+    "nom": "DOMAINE DES ARTS",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Dessin",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Musique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DES ARTS"
+   },
+   {
+    "nom": "DOMAINE DU DEVELOPPEMENT PERSONNEL",
+    "max_periode": null,
+    "branches": [
+     {
+      "nom": "Educ. Phys",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": "DOMAINE DU DEVELOPPEMENT PERSONNEL"
+   }
+  ],
+  "max_periode": 410,
+  "max_composition": 820,
+  "max_semestre": 1640,
+  "max_annuel": 3280
+ },
+ {
+  "code": "1ere_social",
+  "nom_classe": "1ère Année Humanités Sociale",
+  "option": "Social",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'ENSEIGNEMENT PRIMAIRE, SECONDAIRE",
+    "ET  TECHNIQUE"
+   ],
+   "titre": "BULLETIN DE LA 1ère ANNEE HUMANITES SOCIALE",
+   "reference": "IGE/P.S/056",
+   "reference_table": null,
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Education à la Vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Ed. civ. & morale",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education physique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Hygiène individuelle & collective",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Secourisme",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Comptabilité",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Droit",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Méthode de l'étudiant",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 40,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Intro. aux inst. sociales (I.I.S)",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Intro. aux sciences sociales (I.S.S)",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Technique animation",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 50,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 520,
+  "max_composition": 1040,
+  "max_semestre": 2080,
+  "max_annuel": 4160
+ },
+ {
+  "code": "2eme_social",
+  "nom_classe": "2ème Année Humanités Sociale",
+  "option": "Social",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE LA 2ème ANNEE HUMANITES SOCIALE",
+   "reference": "IGE/P.S/057",
+   "reference_table": null,
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Education à la Vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Ed. civ. & morale",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education phys. & sportive",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Hygiène alimentaire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Institutions internationales",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Comptabilité",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Droit pénal & civil",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Psychologie générale",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Sociologie africaine",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 40,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Education populaire",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Principe de l'éducation",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 50,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 520,
+  "max_composition": 1040,
+  "max_semestre": 2080,
+  "max_annuel": 4160
+ },
+ {
+  "code": "3eme_social",
+  "nom_classe": "3ème Année Humanités Sociale",
+  "option": "Social",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE LA 3ème ANNEE HUMANITES SOCIALE",
+   "reference": "IGE/P.S./058",
+   "reference_table": null,
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": null
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Education à la Vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Ed. civ. & morale",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Chimie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Economie politique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education phys. & sportive",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Géographie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Histoire",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Hygiène de la famille",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Institutions",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Statistiques",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Droit administratif",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Fiscalité",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Psychologie générale",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Psychologie sociale",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Sociologie générale",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 40,
+    "branches": [
+     {
+      "nom": "Mathématiques",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Technique d'enquête",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Trav. soc. ind. & de groupe",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 50,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 6",
+    "max_periode": 100,
+    "branches": [
+     {
+      "nom": "Pratique professionnelle",
+      "max": 100,
+      "comp": false
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 680,
+  "max_composition": 1160,
+  "max_semestre": 2520,
+  "max_annuel": 5040
+ },
+ {
+  "code": "4eme_social",
+  "nom_classe": "4ème Année Humanités Sociale",
+  "option": "Social",
+  "type": "groupe",
+  "bulletin": {
+   "ministere_lignes": [
+    "MINISTERE DE L'EDUCATION NATIONALE",
+    "ET NOUVELLE CITOYENNETE"
+   ],
+   "titre": "BULLETIN DE LA 4ème ANNEE HUMANITES SOCIALE",
+   "reference": "IGE/P.S/059",
+   "reference_table": null,
+   "echoue": false,
+   "date_dans_boite": true,
+   "interdiction": true,
+   "signature_ligne": [
+    "Sceau de l'école",
+    "Signature de l'élève",
+    "Nom et Signature"
+   ],
+   "gabarit": "etat"
+  },
+  "groupes": [
+   {
+    "nom": "GROUPE 1",
+    "max_periode": 10,
+    "branches": [
+     {
+      "nom": "Religion",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Education à la vie",
+      "max": 10,
+      "comp": true
+     },
+     {
+      "nom": "Ed. civ. & morale",
+      "max": 10,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 2",
+    "max_periode": 20,
+    "branches": [
+     {
+      "nom": "Déontologie",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Education phys. & sportive",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Informatique",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Organ. du travail et gestion",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
+      "max": 20,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 3",
+    "max_periode": 30,
+    "branches": [
+     {
+      "nom": "Anglais",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Doctrine sociale",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Hist. du travail org. Profes.",
+      "max": 30,
+      "comp": true
+     },
+     {
+      "nom": "Protection de l'enfant",
+      "max": 30,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 4",
+    "max_periode": 40,
+    "branches": [
+     {
+      "nom": "Démographie",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Dév. communautaire",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Economie du développement",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Hygiène gestion du travail",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Mathématiques",
+      "max": 40,
+      "comp": true
+     },
+     {
+      "nom": "Psychologie appliquée",
+      "max": 40,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 50,
+    "branches": [
+     {
+      "nom": "Français",
+      "max": 50,
+      "comp": true
+     },
+     {
+      "nom": "Législation du travail",
+      "max": 50,
+      "comp": true
+     }
+    ],
+    "domaine": null
+   },
+   {
+    "nom": "GROUPE 6",
+    "max_periode": 100,
+    "branches": [
+     {
+      "nom": "Pratique professionnelle",
+      "max": 100,
+      "comp": false
+     }
+    ],
+    "domaine": null
+   }
+  ],
+  "max_periode": 690,
+  "max_composition": 1180,
+  "max_semestre": 2560,
+  "max_annuel": 5120
+ }
+]
