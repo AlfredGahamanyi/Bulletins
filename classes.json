@@ -286,11 +286,6 @@
       "nom": "Agriculture",
       "max": 40,
       "comp": true
-     },
-     {
-      "nom": "Pratique professionnelle",
-      "max": 40,
-      "comp": true
      }
     ],
     "domaine": null
@@ -311,12 +306,24 @@
      }
     ],
     "domaine": null
+   },
+   {
+    "nom": "GROUPE 6",
+    "max_periode": 100,
+    "branches": [
+     {
+      "nom": "Pratique professionnelle",
+      "max": 100,
+      "comp": false
+     }
+    ],
+    "domaine": null
    }
   ],
-  "max_periode": 390,
-  "max_composition": 780,
-  "max_semestre": 1560,
-  "max_annuel": 3120
+  "max_periode": 450,
+  "max_composition": 700,
+  "max_semestre": 1600,
+  "max_annuel": 3200
  },
  {
   "code": "2eme_nutrition",
@@ -417,11 +424,6 @@
       "nom": "Education nutritionnelle",
       "max": 20,
       "comp": true
-     },
-     {
-      "nom": "Pratique professionnelle",
-      "max": 20,
-      "comp": true
      }
     ],
     "domaine": null
@@ -474,12 +476,24 @@
      }
     ],
     "domaine": null
+   },
+   {
+    "nom": "GROUPE 5",
+    "max_periode": 100,
+    "branches": [
+     {
+      "nom": "Pratique professionnelle",
+      "max": 100,
+      "comp": false
+     }
+    ],
+    "domaine": null
    }
   ],
-  "max_periode": 440,
-  "max_composition": 880,
-  "max_semestre": 1760,
-  "max_annuel": 3520
+  "max_periode": 520,
+  "max_composition": 840,
+  "max_semestre": 1880,
+  "max_annuel": 3760
  },
  {
   "code": "3eme_nutrition",
