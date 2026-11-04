@@ -197,12 +197,12 @@
       "comp": true
      },
      {
-      "nom": "Education Civique et Morale",
+      "nom": "Education à la vie",
       "max": 10,
       "comp": true
      },
      {
-      "nom": "Education à la vie",
+      "nom": "Education Civique et Morale",
       "max": 10,
       "comp": true
      },
@@ -212,22 +212,22 @@
       "comp": true
      },
      {
-      "nom": "Informatique",
+      "nom": "Géographie",
       "max": 10,
       "comp": true
      },
-     {
+      {
       "nom": "Histoire",
       "max": 10,
       "comp": true
      },
      {
-      "nom": "Géographie",
+      "nom": "Hygiène alimentaire",
       "max": 10,
       "comp": true
      },
      {
-      "nom": "Hygiène alimentaire",
+      "nom": "Informatique",
       "max": 10,
       "comp": true
      }
@@ -244,17 +244,17 @@
       "comp": true
      },
      {
-      "nom": "Physique",
-      "max": 20,
-      "comp": true
-     },
-     {
       "nom": "Chimie",
       "max": 20,
       "comp": true
-     },
+     },  
      {
       "nom": "Nutrition générale",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
       "max": 20,
       "comp": true
      },
@@ -359,12 +359,12 @@
       "comp": true
      },
      {
-      "nom": "Education Civique et Morale",
+      "nom": "Education à la vie",
       "max": 10,
       "comp": true
      },
      {
-      "nom": "Education à la vie",
+      "nom": "Education Civique et Morale",
       "max": 10,
       "comp": true
      },
@@ -374,7 +374,7 @@
       "comp": true
      },
      {
-      "nom": "Informatique",
+      "nom": "Géographie",
       "max": 10,
       "comp": true
      },
@@ -384,12 +384,12 @@
       "comp": true
      },
      {
-      "nom": "Géographie",
+      "nom": "Hygiène alimentaire",
       "max": 10,
       "comp": true
      },
      {
-      "nom": "Hygiène alimentaire",
+      "nom": "Informatique",
       "max": 10,
       "comp": true
      },
@@ -411,17 +411,17 @@
       "comp": true
      },
      {
-      "nom": "Physique",
-      "max": 20,
-      "comp": true
-     },
-     {
       "nom": "Chimie",
       "max": 20,
       "comp": true
      },
      {
       "nom": "Education nutritionnelle",
+      "max": 20,
+      "comp": true
+     },
+     {
+      "nom": "Physique",
       "max": 20,
       "comp": true
      }
@@ -438,12 +438,12 @@
       "comp": true
      },
      {
-      "nom": "Zootechnie (élevage)",
+      "nom": "Nutrition générale",
       "max": 30,
       "comp": true
      },
      {
-      "nom": "Nutrition générale",
+      "nom": "Pathologie de la nutrition",
       "max": 30,
       "comp": true
      },
@@ -453,7 +453,7 @@
       "comp": true
      },
      {
-      "nom": "Pathologie de la nutrition",
+      "nom": "Zootechnie (élevage)",
       "max": 30,
       "comp": true
      }
