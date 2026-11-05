@@ -9,7 +9,7 @@
   const COEF_COMPOSITION = 2;
   const NON_ETUDIE = "NE", TEXTE_NON_ETUDIE = "-";
   const SEUILS_APPRECIATION = [[80, "Excellent"], [70, "Très bien"], [60, "Bien"], [50, "Passable"], [0, "Insuffisant"]];
-  const SEUILS_APPLICATION = [[80, "E"], [70, "TB"], [50, "B"], [0, "MA"]];
+  const SEUILS_APPLICATION = [[80, "E"], [70, "TB"], [50, "B"], [40, "M"], [0, "MA"]];
   const CHAMPS_TOTAUX = ["P1", "P2", "COMP_S1", "TOT_S1", "P3", "P4", "COMP_S2", "TOT_S2", "TOT_GEN"];
   const PERIODES = ["P1", "P2", "P3", "P4"];
 
