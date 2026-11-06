@@ -37,10 +37,17 @@
 
   // ---------- Choix de la classe (une seule fois)
   function vueChoix() {
-    const options = [...new Set(classes.map((c) => c.option))];
+    const visibles = Auth.classesAutorisees(classes);
+    if (!visibles.length) {
+      page("Bulletins scolaires", `<h2>Aucune classe</h2><p class="aide">Aucune classe n'est associée à votre compte. Contactez l'administration.</p>` +
+        (Auth.actif() ? `<button class="btn second" id="deco">Se déconnecter</button>` : ""), "");
+      const d = document.getElementById("deco"); if (d) d.addEventListener("click", () => { Auth.deconnexion(); rendre(); });
+      return;
+    }
+    const options = [...new Set(visibles.map((c) => c.option))];
     const corps = `<h2>Quelle est votre classe ?</h2>
       <p class="aide">Vous ne verrez que cette classe : vos cotes sont ainsi protégées contre toute modification par erreur dans une autre classe. Vous pourrez la changer plus tard dans « Ma classe ».</p>` +
-      options.map((o) => `<h3>${esc(o)}</h3>` + classes.filter((c) => c.option === o)
+      options.map((o) => `<h3>${esc(o)}</h3>` + visibles.filter((c) => c.option === o)
         .map((c) => `<button class="carte" data-classe="${esc(c.code)}"><b>${esc(c.nom_classe)}</b></button>`).join("")).join("");
     page("Bulletins scolaires", corps, "");
     $app.querySelectorAll("[data-classe]").forEach((b) => b.addEventListener("click", () => {
@@ -234,7 +241,7 @@
   const jourFr = (iso) => new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
   function contenuSauvegarde() {
     const eleves = {};
-    for (const code in etat.eleves) if (etat.eleves[code].length) eleves[code] = etat.eleves[code];
+    for (const code in etat.eleves) if (etat.eleves[code].length && Auth.peut(code)) eleves[code] = etat.eleves[code];
     return JSON.stringify({ application: "bulletins-scolaires", version: 1, date: new Date().toISOString(), ecole: window.ETABLISSEMENT.code_ecole, classe: etat.classe, eleves }, null, 1);
   }
   const nomSauvegarde = () => `sauvegarde_${etat.classe}_${new Date().toISOString().slice(0, 10)}.json`;
@@ -272,8 +279,9 @@
   async function restaurer(fichier) {
     try {
       const d = JSON.parse(await fichier.text()), { nbClasses, total } = verifierSauvegarde(d);
+      if (Object.keys(d.eleves).some((code) => !Auth.peut(code))) { alert("Cette sauvegarde contient des classes qui ne sont pas les vôtres : elle ne peut pas être restaurée avec ce compte."); return; }
       if (!confirm(`Remplacer les données actuelles par cette sauvegarde (${total} élève${total > 1 ? "s" : ""}, ${nbClasses} classe${nbClasses > 1 ? "s" : ""}${d.date ? ", du " + jourFr(d.date) : ""}) ?`)) return;
-      for (const code in d.eleves) etat.eleves[code] = d.eleves[code];
+      for (const code in d.eleves) if (Auth.peut(code)) etat.eleves[code] = d.eleves[code];
       if (!classe() && d.classe && classes.some((c) => c.code === d.classe)) etat.classe = d.classe;
       if (sauver()) { toast("Sauvegarde restaurée"); rendre(); }
     } catch (e) { alert(e instanceof SyntaxError ? "Ce fichier n'est pas une sauvegarde de cette application." : e.message); }
@@ -294,7 +302,8 @@
     const c = classe();
     page("", `<h2>Plus</h2>
       <div class="carte"><b>Ma classe</b><small>${esc(c.nom_classe)} · ${esc(c.option)}</small></div>
-      <button class="btn second" id="chg">Changer de classe</button>
+      ${Auth.peutChanger(classes) ? '<button class="btn second" id="chg">Changer de classe</button>' : ""}
+      ${Auth.actif() ? `<div class="carte"><b>Connecté</b><small>${esc((Auth.session() || {}).nom || "")}${Auth.session() && Auth.session().role === "admin" ? " · administrateur" : ""}</small></div><button class="btn second" id="deco">Se déconnecter</button>` : ""}
       <details class="donnees"${donneesOuvertes ? " open" : ""}><summary>Mes données (changer de téléphone, copie de secours)</summary>
         <p class="aide">Vos élèves et vos cotes sont dans ce téléphone. Gardez une copie pour les retrouver si vous changez de téléphone ou si Chrome est réinitialisé.</p>${sauvegardeRecenteHtml()}
         <button class="btn second" id="envoi">Envoyer une copie (WhatsApp…)</button>
@@ -303,7 +312,10 @@
         <input type="file" id="fichier" accept=".json,.txt,application/json,text/plain" hidden>
         <button class="btn danger" id="prec">Annuler la dernière modification</button></details>
       <p class="aide" style="margin-top:20px;text-align:center">${esc(window.ETABLISSEMENT.nom)}<br>Chef d'établissement : ${esc(window.ETABLISSEMENT.chef_etablissement)}<br>Bulletins scolaires · fonctionne sans internet</p>`, "plus");
-    document.getElementById("chg").addEventListener("click", () => {
+    const deco = document.getElementById("deco");
+    if (deco) deco.addEventListener("click", () => { if (confirm("Se déconnecter ?")) { Auth.deconnexion(); rendre(); } });
+    const chg = document.getElementById("chg");
+    if (chg) chg.addEventListener("click", () => {
       if (!confirm("Changer de classe ? Les données de la classe actuelle sont conservées.")) return;
       etat.classe = null; sauver(); aller("#/");
     });
@@ -316,9 +328,60 @@
     document.getElementById("prec").addEventListener("click", annulerDerniere);
   }
 
+  // ---------- Connexion (ne s'affiche que si acces.js active la connexion)
+  function vueConnexion() {
+    const transition = Auth.modeTransition();
+    $app.innerHTML = `<header class="haut"><p>${esc(window.ETABLISSEMENT.nom)} · ${esc(window.ETABLISSEMENT.annee_scolaire)}</p><h1>Connexion</h1></header><main>
+      <h2>Votre code d'accès</h2><p class="aide">Entrez le code personnel remis par l'administration.</p>
+      <form id="f" novalidate><label for="code">Code d'accès</label>
+        <input id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ex. 4NUT-K7M2-QX9P-4TRB" style="text-transform:uppercase">
+        <p class="msg" id="err" role="alert"></p><button class="btn" type="submit" id="ok">Se connecter</button></form>
+      ${transition ? `<p class="bandeau" style="margin-top:22px">Période de transition : les codes sont en cours de distribution.</p><button class="btn second" id="inv">Continuer sans code</button>` : ""}</main>`;
+    const f = document.getElementById("f"), err = document.getElementById("err"), ok = document.getElementById("ok");
+    f.addEventListener("submit", async (ev) => {
+      ev.preventDefault(); err.textContent = ""; ok.disabled = true; ok.textContent = "Vérification…";
+      const r = await Auth.connexion(document.getElementById("code").value);
+      ok.disabled = false; ok.textContent = "Se connecter";
+      if (!r.ok) { err.textContent = r.erreur; return; }
+      toast("Connecté"); rendre();
+    });
+    const inv = document.getElementById("inv");
+    if (inv) inv.addEventListener("click", () => { Auth.inviter(); rendre(); });
+    const c = document.getElementById("code"); if (c) c.focus();
+  }
+
+  // Un titulaire ne travaille que dans sa classe (la classe mémorisée est corrigée sans toucher aux élèves ni aux cotes).
+  function verrouillerClasse() {
+    if (!Auth.actif()) return;
+    const fixer = (code) => { etat.classe = code; try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) { /* ignoré */ } };
+    if (etat.classe && !Auth.peut(etat.classe)) fixer(null);
+    if (!etat.classe && !Auth.estAdmin()) { const p = Auth.classesAutorisees(classes); if (p.length === 1) fixer(p[0].code); }
+  }
+
+  // Déconnexion automatique après inactivité (durée réglée dans acces.js).
+  function surveillerSession() {
+    if (!Auth.actif()) return;
+    ["click", "keydown", "touchstart"].forEach((ev) => document.addEventListener(ev, () => Auth.touch(), { passive: true }));
+    const verifier = () => { if (Auth.actif() && !Auth.session() && !document.getElementById("code")) rendre(); };
+    setInterval(verifier, 30000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) verifier(); });
+  }
+
+  // Bandeau « nouvelle version » quand une mise à jour vient d'être installée en arrière-plan.
+  function annoncerMiseAJour() {
+    if (document.getElementById("maj")) return;
+    const d = document.createElement("div"); d.id = "maj"; d.className = "bandeau";
+    d.style.cssText = "position:fixed;left:8px;right:8px;top:8px;z-index:50;display:flex;gap:10px;align-items:center;justify-content:space-between";
+    d.innerHTML = '<span>Nouvelle version prête.</span><button class="btn" style="width:auto;min-height:36px;padding:6px 14px">Actualiser</button>';
+    d.querySelector("button").addEventListener("click", () => location.reload());
+    document.body.appendChild(d);
+  }
+
   // ---------- Routeur
   function rendre() {
     const [, a, b, c2] = location.hash.split("/").map((p) => decodeURIComponent(p || ""));
+    if (Auth.actif() && !Auth.session()) return vueConnexion();
+    verrouillerClasse();
     if (!classe()) return vueChoix();
     if (!a || a === "eleves") return b ? vueFormEleve(b) : vueEleves();
     if (a === "cotes") {
@@ -333,10 +396,16 @@
 
   async function demarrer() {
     charger();
+    Auth.copieDeSecurite(CLE);
     try { classes = await (await fetch("classes.json")).json(); }
     catch (e) { $app.innerHTML = '<main><p class="vide">Impossible de charger les classes. Ouvrez l\'application depuis son lien web (pas depuis un fichier).</p></main>'; return; }
     if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+    if ("serviceWorker" in navigator) {
+      const avait = !!navigator.serviceWorker.controller;
+      navigator.serviceWorker.addEventListener("controllerchange", () => { if (avait) annoncerMiseAJour(); });
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+    surveillerSession();
     window.addEventListener("hashchange", rendre);
     rendre();
   }
