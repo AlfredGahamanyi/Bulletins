@@ -251,7 +251,7 @@ ${c.lignes.map((l) => `<tr><th>${esc(l.libelle)}</th><td>${l.inscrit}</td><td>${
 <h2>Cartouche de la liste de proclamation</h2>
 <p class="sous">${esc(classe.nom_classe)} — Année scolaire ${esc(etab.annee_scolaire)}</p>
 ${blocs}
-<p class="legende">Participant = inscrit dont la colonne est complète. Non classé = inscrit dont il manque une cote (ou portant la mention NC) dans la colonne.
+<p class="legende">Participant = inscrit dont la colonne est complète. Non classé = inscrit dont il manque des cotes dans la colonne.
 Réussis = 50 % ou plus de son maximum ; Échoué = moins de 50 %. Pourcentages calculés sur les participants.</p>
 </main>`;
   }
