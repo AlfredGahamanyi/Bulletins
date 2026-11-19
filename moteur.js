@@ -8,6 +8,9 @@
   const SEMESTRES = { S1: ["P1", "P2", "COMP_S1"], S2: ["P3", "P4", "COMP_S2"] };
   const COEF_COMPOSITION = 2;
   const NON_ETUDIE = "NE", TEXTE_NON_ETUDIE = "-";
+  // Non classé : l'élève n'a pas de cote dans ce cours. On tape la lettre N (ou NC) ; la cote est enregistrée « NC ».
+  const NON_CLASSE = "NC", TEXTE_NON_CLASSE = "NC";
+  const estLettreNC = (t) => /^(n|nc)$/i.test(t);
   const SEUILS_APPRECIATION = [[80, "Excellent"], [70, "Très bien"], [60, "Bien"], [50, "Passable"], [0, "Insuffisant"]];
   const SEUILS_APPLICATION = [[80, "E"], [70, "TB"], [50, "B"], [40, "M"], [0, "MA"]];
   const CHAMPS_TOTAUX = ["P1", "P2", "COMP_S1", "TOT_S1", "P3", "P4", "COMP_S2", "TOT_S2", "TOT_GEN"];
@@ -35,6 +38,7 @@
   function formatNote(note) {
     if (note === null || note === undefined || note === "") return "";
     if (note === NON_ETUDIE) return TEXTE_NON_ETUDIE;
+    if (note === NON_CLASSE) return TEXTE_NON_CLASSE;
     const n = Number(note);
     return Number.isNaN(n) ? String(note) : formatG(n);
   }
@@ -60,6 +64,7 @@
       const t = v.trim();
       if (!t) return null;
       if (t === TEXTE_NON_ETUDIE) return NON_ETUDIE;
+      if (estLettreNC(t)) return NON_CLASSE;
       v = t;
     }
     const n = Number(String(v).replace(",", "."));
@@ -70,10 +75,11 @@
   // Retourne [valeur, null] si acceptée, sinon [null, message].
   function validerCote(brut, maximum) {
     const t = String(brut === null || brut === undefined ? "" : brut).trim().replace(",", ".");
-    if (t === "") return [null, `case vide : entrez une cote ou "${TEXTE_NON_ETUDIE}" si le cours n'a pas été étudié.`];
+    if (t === "") return [null, `case vide : entrez une cote, "${TEXTE_NON_ETUDIE}" si le cours n'a pas été étudié, ou N si l'élève n'a pas de cote (non classé).`];
     if (t === TEXTE_NON_ETUDIE) return [TEXTE_NON_ETUDIE, null];
+    if (estLettreNC(t)) return [TEXTE_NON_CLASSE, null];
     const v = Number(t);
-    if (Number.isNaN(v)) return [null, `entrez un nombre (ou "${TEXTE_NON_ETUDIE}" si non étudié).`];
+    if (Number.isNaN(v)) return [null, `entrez un nombre (ou "${TEXTE_NON_ETUDIE}" si non étudié, N si non classé).`];
     if (!(v >= 0 && v <= maximum)) return [null, `doit être entre 0 et ${formatG(maximum)}.`];
     return [v, null];
   }
@@ -85,7 +91,7 @@
   function sommeStricte(valeurs) {
     const retenues = valeurs.filter((v) => v !== NON_ETUDIE);
     if (!retenues.length) return valeurs.length ? NON_ETUDIE : null;
-    if (retenues.some((v) => v === null || v === undefined)) return null;
+    if (retenues.some((v) => v === null || v === undefined || v === NON_CLASSE)) return null;
     return arrondirPy(retenues.reduce((a, b) => a + b, 0), 2);
   }
 
@@ -114,6 +120,7 @@
     const maximaClasse = maximaChamps(classe, actives);
     const maximaEleve = Object.assign({}, maximaClasse);
     const lignes = [];
+    const incomplet = {}; // colonnes où il manque une cote (case vide ou NC) : l'élève y est non classé
     for (const groupe of classe.groupes)
       for (const branche of groupe.branches) {
         const notes = (eleve.notes || {})[branche.nom] || {};
@@ -123,6 +130,7 @@
           if (!plafond) { ligne[c] = null; continue; }
           const v = lireNote(notes, c);
           ligne[c] = v;
+          if (actives.includes(c) && (v === null || v === NON_CLASSE)) incomplet[c] = true;
           if (v === NON_ETUDIE && actives.includes(c)) maximaEleve[c] -= plafond;
         }
         const c1 = SEMESTRES.S1.filter((c) => maxBranche(branche, c));
@@ -137,7 +145,7 @@
     maximaEleve.TOT_GEN = maximaEleve.TOT_S1 + maximaEleve.TOT_S2;
 
     const totaux = {};
-    for (const c of COLONNES_NOTES) totaux[c] = somme(lignes.map((l) => l[c]));
+    for (const c of COLONNES_NOTES) totaux[c] = incomplet[c] ? null : somme(lignes.map((l) => l[c]));
     totaux.TOT_S1 = sommeStricte(lignes.map((l) => l.TOT_S1));
     totaux.TOT_S2 = sommeStricte(lignes.map((l) => l.TOT_S2));
     totaux.TOT_GEN = sommeStricte([totaux.TOT_S1, totaux.TOT_S2]);
@@ -146,11 +154,19 @@
     for (const c of CHAMPS_TOTAUX)
       pourcentages[c] = maximaEleve[c] && estNombre(totaux[c]) ? arrondir((totaux[c] / maximaEleve[c]) * 100) : null;
     totaux.POURCENTAGE = pourcentages.TOT_GEN;
+    // Non classé : pas de cote dans au moins un cours de la colonne (et donc des totaux qui la contiennent).
+    const nonClasse = {};
+    for (const c of COLONNES_NOTES) if (incomplet[c]) nonClasse[c] = true;
+    const toutesActives = (cols) => cols.every((c) => actives.includes(c));
+    const unIncomplet = (cols) => cols.some((c) => incomplet[c]);
+    if (toutesActives(SEMESTRES.S1) && unIncomplet(SEMESTRES.S1)) nonClasse.TOT_S1 = true;
+    if (toutesActives(SEMESTRES.S2) && unIncomplet(SEMESTRES.S2)) nonClasse.TOT_S2 = true;
+    if (toutesActives(COLONNES_NOTES) && unIncomplet(COLONNES_NOTES)) nonClasse.TOT_GEN = true;
     const complet = maximaClasse.TOT_GEN === classe.max_annuel && estNombre(totaux.TOT_GEN);
     const application = {};
     for (const p of PERIODES) application[p] = getApplication(pourcentages[p]);
     return { eleve, lignes, totaux, pourcentages, appreciation: getAppreciation(totaux.POURCENTAGE), application,
-      colonnes_actives: actives.slice(), complet, maxima_eleve: maximaEleve };
+      colonnes_actives: actives.slice(), complet, maxima_eleve: maximaEleve, non_classe: nonClasse };
   }
 
   function calculerTotauxParGroupe(classe, resultat) {
@@ -182,7 +198,7 @@
         let v;
         try { v = lireNote(notes, c); } catch (err) { erreurs.push(`${b.nom} - ${c} : note invalide`); continue; }
         const mx = maxBranche(b, c);
-        if (v === NON_ETUDIE && !mx) erreurs.push(`${b.nom} - ${c} : cette colonne n'existe pas pour cette branche`);
+        if ((v === NON_ETUDIE || v === NON_CLASSE) && !mx) erreurs.push(`${b.nom} - ${c} : cette colonne n'existe pas pour cette branche`);
         else if (estNombre(v) && !(v >= 0 && v <= mx))
           erreurs.push(mx ? `${b.nom} - ${c} : ${formatG(v)} doit être entre 0 et ${mx}` : `${b.nom} - ${c} : pas d'examen pour cette branche`);
       }
@@ -203,18 +219,21 @@
     return m;
   }
 
+  // Égalité de points : l'ordre alphabétique des noms départage les élèves, donc une place unique (1, 2, 3, 4…).
+  const comparerNoms = (a, b) => String(a).localeCompare(String(b), "fr", { sensitivity: "base" });
   function rangsPourColonne(resultats, colonne) {
-    const cl = resultats.map((r, i) => [i, r.totaux[colonne]]).filter(([, v]) => estNombre(v));
-    cl.sort((a, b) => b[1] - a[1]); // tri stable : mêmes égalités que Python
-    const rangs = {}; let prec = null, rang = 0;
-    cl.forEach(([index, valeur], pos) => { if (valeur !== prec) { rang = pos + 1; prec = valeur; } rangs[index] = rang; });
+    const cl = resultats.map((r, i) => [i, r.totaux[colonne], (r.eleve && r.eleve.nom) || ""]).filter(([, v]) => estNombre(v));
+    cl.sort((a, b) => (b[1] - a[1]) || comparerNoms(a[2], b[2])); // à noms identiques, l'ordre de saisie est conservé
+    const rangs = {};
+    cl.forEach(([index], pos) => { rangs[index] = pos + 1; });
     return rangs;
   }
   function calculerRangs(resultats, colonnes = ["TOT_GEN"]) {
     for (const r of resultats) r.rangs = r.rangs || {};
     for (const c of colonnes) {
       const rc = rangsPourColonne(resultats, c);
-      resultats.forEach((r, i) => { r.rangs[c] = i in rc ? rc[i] : null; });
+      // Un élève non classé dans une colonne y reçoit la mention « NC » à la place du rang.
+      resultats.forEach((r, i) => { r.rangs[c] = i in rc ? rc[i] : (r.non_classe && r.non_classe[c] ? NON_CLASSE : null); });
     }
     for (const r of resultats) r.rang = r.rangs.TOT_GEN === undefined ? null : r.rangs.TOT_GEN;
     return resultats;
@@ -225,7 +244,7 @@
     return e;
   }
 
-  const API = { COLONNES_NOTES, LIBELLES_COLONNES, SEMESTRES, NON_ETUDIE, TEXTE_NON_ETUDIE, CHAMPS_TOTAUX, PERIODES,
+  const API = { COLONNES_NOTES, LIBELLES_COLONNES, SEMESTRES, NON_ETUDIE, TEXTE_NON_ETUDIE, NON_CLASSE, TEXTE_NON_CLASSE, CHAMPS_TOTAUX, PERIODES,
     estComposition, maxBranche, estNombre, arrondir, formatG, formatNote, formatPourcentage, getAppreciation,
     getApplication, getDecision, lireNote, validerCote, colonnesActives, maximaChamps, calculerBulletin,
     calculerTotauxParGroupe, calculerSousTotaux, verifierMaxima, notesManquantes, calculerRangs, effectifsParColonne };

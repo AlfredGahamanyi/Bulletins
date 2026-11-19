@@ -29,7 +29,7 @@ input.invalide{border-color:var(--erreur);background:color-mix(in srgb,var(--err
 .ligne-cote label{margin:0;font-weight:inherit;font-size:inherit}
 .ligne-cote input{text-align:center;font-weight:600}
 .saisie-cote{display:flex;gap:6px}.saisie-cote input{width:84px}
-.tiret{flex:none;width:48px;min-height:48px;border:1px solid var(--trait);border-radius:var(--r);background:var(--blanc);color:var(--texte);font:inherit;font-size:22px;font-weight:700;cursor:pointer}.tiret:active{background:var(--trait)}
+.tiret{flex:none;width:48px;min-height:48px;border:1px solid var(--trait);border-radius:var(--r);background:var(--blanc);color:var(--texte);font:inherit;font-size:22px;font-weight:700;cursor:pointer}.tiret:active{background:var(--trait)}.tiret.nc{font-size:16px}
 .aide{color:var(--doux);font-size:14px;margin:0 0 12px}
 .vide{color:var(--doux);padding:24px 4px;text-align:center}
 .retour{display:inline-block;margin:0 0 8px;color:var(--encre);font-weight:600;text-decoration:none;min-height:36px}
