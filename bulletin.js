@@ -46,6 +46,7 @@
         corps += `<tr><th>${esc(l.nom)}</th><td>${n(l.P1)}</td><td>${n(l.P2)}</td>${cc("COMP_S1")}<td>${n(l.TOT_S1)}</td><td>${n(l.P3)}</td><td>${n(l.P4)}</td>${cc("COMP_S2")}<td>${n(l.TOT_S2)}</td><td>${n(l.TOT_GEN)}</td><td class="gp"></td><td class="${cl}"></td><td class="${cl}"></td></tr>\n`;
       });
     });
+    const ma = resultat.maxima_affiches || M.maximaAffiches(classe, null); // maxima après retrait des cours non étudiés par la classe
     const mp = classe.max_periode, ms = classe.max_semestre, mc = ms - 2 * mp, g2 = '<td class="gp2"></td>';
     const mxg = (v) => `<td class="mx">${v}</td>`;
     const ligneCols = (f, cls = "") => COLS.map((c) => `<td${cls}>${f(c)}</td>`).join("");
@@ -81,7 +82,7 @@
 </thead>
 <tbody>
 ${corps}
-<tr class="m"><th>MAXIMA GÉNÉRAUX</th>${mxg(mp)}${mxg(mp)}${mxg(mc)}${mxg(ms)}${mxg(mp)}${mxg(mp)}${mxg(mc)}${mxg(ms)}${mxg(classe.max_annuel)}<td class="gp"></td><td class="gp" colspan="2"></td></tr>
+<tr class="m"><th>MAXIMA GÉNÉRAUX</th>${mxg(ma.P1)}${mxg(ma.P2)}${mxg(ma.COMP_S1)}${mxg(ma.TOT_S1)}${mxg(ma.P3)}${mxg(ma.P4)}${mxg(ma.COMP_S2)}${mxg(ma.TOT_S2)}${mxg(ma.TOT_GEN)}<td class="gp"></td><td class="gp" colspan="2"></td></tr>
 <tr><th>TOTAUX</th>${ligneCols((c) => n(tot[c]))}${g2}
 ${etat ? `<td colspan="2" rowspan="7" class="side">
 %<br>
@@ -140,17 +141,26 @@ ${bl.interdiction ? `<div class="note" style="border-top:0;justify-content:space
     const app = resultat.application, cond = eleve.conduite || {}, bl = classe.bulletin || {};
     const mx = (v) => `<td class="mx">${v}</td>`, gy = '<td class="gy"></td>', g2 = '<td class="gp2"></td>', fin = '<td class="gp"></td><td class="gp" colspan="2"></td>';
     // ordre des colonnes : MAX, P1, P2, MAX, COMP_S1, MAX, TOT_S1, MAX, P3, P4, MAX, COMP_S2, MAX, TOT_S2, TOT_GEN
-    const ligne15 = (m, f) => `${m(1)}${f("P1")}${f("P2")}${m(2)}${f("COMP_S1")}${m(4)}${f("TOT_S1")}${m(1)}${f("P3")}${f("P4")}${m(2)}${f("COMP_S2")}${m(4)}${f("TOT_S2")}${f("TOT_GEN")}`;
+    const ligne15 = (m, f) => `${m("P1")}${f("P1")}${f("P2")}${m("COMP_S1")}${f("COMP_S1")}${m("TOT_S1")}${f("TOT_S1")}${m("P3")}${f("P3")}${f("P4")}${m("COMP_S2")}${f("COMP_S2")}${m("TOT_S2")}${f("TOT_S2")}${f("TOT_GEN")}`;
+    // Maxima d'un cours pour chaque case MAX du bulletin, sans les colonnes où la classe n'a pas étudié ce cours.
+    const exc = resultat.exclus || new Set();
+    const POIDS = { P1: 1, P2: 1, COMP_S1: 2, P3: 1, P4: 1, COMP_S2: 2 };
+    const COLS_MAX = { P1: ["P1"], COMP_S1: ["COMP_S1"], TOT_S1: ["P1", "P2", "COMP_S1"], P3: ["P3"], COMP_S2: ["COMP_S2"], TOT_S2: ["P3", "P4", "COMP_S2"] };
+    const valMax = (l, col) => l.max * COLS_MAX[col].reduce((a, c) => a + (exc.has(l.nom + "|" + c) ? 0 : POIDS[c]), 0);
+    const sansZero = (v) => (v ? v : "");
     const ligneBas = (f) => `${gy}${f("P1")}${f("P2")}${gy}${f("COMP_S1")}${gy}${f("TOT_S1")}${gy}${f("P3")}${f("P4")}${gy}${f("COMP_S2")}${gy}${f("TOT_S2")}${f("TOT_GEN")}${g2}`;
     let corps = "", precedent = null;
-    for (const g of M.calculerSousTotaux(classe, resultat)) {
+    const sousTotaux = M.calculerSousTotaux(classe, resultat);
+    for (const g of sousTotaux) {
       if (g.domaine !== precedent) { corps += `<tr class="dom"><th colspan="19">${esc(g.domaine)}</th></tr>\n`; precedent = g.domaine; }
       if (g.nom !== g.domaine) corps += `<tr class="sdom"><th colspan="19">${esc(g.nom)}</th></tr>\n`;
-      for (const l of g.branches) corps += `<tr><th>${esc(l.nom)}</th>${ligne15((k) => `<td class="mx">${l.max * k}</td>`, (c) => `<td>${n(l[c])}</td>`)}${fin}</tr>\n`;
+      for (const l of g.branches) corps += `<tr><th>${esc(l.nom)}</th>${ligne15((col) => `<td class="mx">${sansZero(valMax(l, col))}</td>`, (c) => `<td>${n(l[c])}</td>`)}${fin}</tr>\n`;
       const st = g.sous_total;
-      corps += `<tr class="st"><th>SOUS TOTAL</th>${ligne15((k) => `<td>${st.max * k}</td>`, (c) => `<td>${n(st[c])}</td>`)}${fin}</tr>\n`;
+      corps += `<tr class="st"><th>SOUS TOTAL</th>${ligne15((col) => `<td>${sansZero(g.branches.reduce((a, l) => a + valMax(l, col), 0))}</td>`, (c) => `<td>${n(st[c])}</td>`)}${fin}</tr>\n`;
     }
-    const mp = classe.max_periode, ms = classe.max_semestre, m2 = mp ? mp * 2 : "";
+    const toutesBranches = sousTotaux.flatMap((g) => g.branches);
+    const S = (col) => toutesBranches.reduce((a, l) => a + valMax(l, col), 0);
+    const mx6 = { P1: S("P1"), COMP_S1: S("COMP_S1"), TOT_S1: S("TOT_S1"), P3: S("P3"), COMP_S2: S("COMP_S2"), TOT_S2: S("TOT_S2") };
     const biff = (liste) => (liste.includes(code) ? "biff" : "");
     const hors = code && code !== "REPECHAGE" ? "biff" : "";
     const cell = (obj) => (c) => `<td>${n(obj[c])}</td>`;
@@ -172,7 +182,7 @@ ${bl.interdiction ? `<div class="note" style="border-top:0;justify-content:space
 <div class="ttl">BULLETIN DE LA ${esc(classe.nom_classe.toUpperCase())}<span class="annee">Année scolaire ${esc(etab.annee_scolaire)}</span></div>
 ${racine.BULLETIN_TETE_DOMAINES}<tbody>
 ${corps}
-<tr class="st"><th>MAX GEN/TOT.</th><td>${mp}</td><td colspan="2"></td><td>${m2}</td><td></td><td>${ms}</td><td></td><td>${mp}</td><td colspan="2"></td><td>${m2}</td><td></td><td>${ms}</td><td></td><td>${classe.max_annuel}</td>${fin}</tr>
+<tr class="st"><th>MAX GEN/TOT.</th><td>${mx6.P1}</td><td colspan="2"></td><td>${mx6.COMP_S1}</td><td></td><td>${mx6.TOT_S1}</td><td></td><td>${mx6.P3}</td><td colspan="2"></td><td>${mx6.COMP_S2}</td><td></td><td>${mx6.TOT_S2}</td><td></td><td>${mx6.TOT_S1 + mx6.TOT_S2}</td>${fin}</tr>
 <tr><th>TOTAUX</th>${ligneBas(cell(tot))}
 <td colspan="2" rowspan="7" class="side">
 <span class="${biff(["DOUBLE", "ECHEC"])}">PASSE (1)</span><br>
@@ -218,7 +228,7 @@ Le Chef d'Etablissement<br>Sceau de l'école
       for (const r of resultats) {
         const cible = String(r.eleve.sexe || "").trim().toUpperCase().startsWith("F") ? filles : garcons;
         cible.inscrit++;
-        const participe = M.estNombre(r.totaux[colonne]) && (!M.COLONNES_NOTES.includes(colonne) || M.notesManquantes(classe, r.eleve, [colonne]).length === 0);
+        const participe = M.estNombre(r.totaux[colonne]) && (!M.COLONNES_NOTES.includes(colonne) || M.notesManquantes(classe, r.eleve, [colonne], r.exclus).length === 0);
         if (!participe) { cible.non_classe++; continue; }
         cible.participant++;
         const maximum = r.maxima_eleve[colonne], p = maximum ? (r.totaux[colonne] / maximum) * 100 : 0;
@@ -251,7 +261,7 @@ ${c.lignes.map((l) => `<tr><th>${esc(l.libelle)}</th><td>${l.inscrit}</td><td>${
 <h2>Cartouche de la liste de proclamation</h2>
 <p class="sous">${esc(classe.nom_classe)} — Année scolaire ${esc(etab.annee_scolaire)}</p>
 ${blocs}
-<p class="legende">Participant = inscrit dont la colonne est complète. Non classé = inscrit dont il manque des cotes dans la colonne.
+<p class="legende">Participant = inscrit dont la colonne est complète. Non classé = inscrit dont il manque une cote (ou portant la mention NC) dans la colonne.
 Réussis = 50 % ou plus de son maximum ; Échoué = moins de 50 %. Pourcentages calculés sur les participants.</p>
 </main>`;
   }

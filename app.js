@@ -138,26 +138,31 @@
   function vueFormCotes(col, num) {
     const c = classe(), e = trouver(num);
     if (!e) return aller("#/cotes/" + col);
+    const ex = M.coursNonEtudies(c, eleves()); // cours déjà « non étudiés » par la classe (tiret saisi pour un élève)
     let dernierDomaine = null, html = "";
     c.groupes.forEach((g) => {
       const branches = g.branches.filter((b) => M.maxBranche(b, col));
       if (!branches.length) return;
       if (g.domaine && g.domaine !== dernierDomaine) { html += `<h3>${esc(g.domaine)}</h3>`; dernierDomaine = g.domaine; }
       html += `<h3>${esc(g.nom)}</h3>` + branches.map((b, i) => {
-        const brut = ((e.notes || {})[b.nom] || {})[col];
-        return `<div class="ligne-cote"><label for="c-${g.nom}-${i}"><span>${esc(b.nom)}</span> <em>/ ${M.formatG(M.maxBranche(b, col))}</em></label>
-          <div class="saisie-cote"><input id="c-${g.nom}-${i}" data-b="${esc(b.nom)}" data-max="${M.maxBranche(b, col)}" inputmode="decimal" autocomplete="off" placeholder="cote ou -" value="${brut == null ? "" : esc(M.formatNote(brut))}"><button type="button" class="tiret" data-tiret="c-${g.nom}-${i}" aria-label="Non étudié (tiret)">-</button></div></div><p class="msg" data-m="${esc(b.nom)}"></p>`;
+        let brut = ((e.notes || {})[b.nom] || {})[col];
+        const exclu = ex.has(b.nom + "|" + col), vide = brut == null || (typeof brut === "string" && brut.trim() === "");
+        if (exclu && vide) brut = "-"; // la classe n'a pas étudié ce cours : on propose le tiret
+        const note = !exclu ? "" : (vide || brut === "-" ? ` <em style="color:#8a5a12">· non étudié par la classe</em>` : ` <em style="color:#a8322d">· non étudié par la classe : cette cote ne sera pas comptée</em>`);
+        return `<div class="ligne-cote"><label for="c-${g.nom}-${i}"><span>${esc(b.nom)}</span> <em>/ ${M.formatG(M.maxBranche(b, col))}</em>${note}</label>
+          <div class="saisie-cote"><input id="c-${g.nom}-${i}" data-b="${esc(b.nom)}" data-max="${M.maxBranche(b, col)}" inputmode="decimal" autocomplete="off" placeholder="cote, - ou N" value="${brut == null ? "" : esc(M.formatNote(brut))}"><button type="button" class="tiret" data-tiret="c-${g.nom}-${i}" aria-label="Non étudié (tiret)">-</button><button type="button" class="tiret nc" style="font-size:16px" data-nc="c-${g.nom}-${i}" aria-label="Non classé : pas de cote dans ce cours">NC</button></div></div><p class="msg" data-m="${esc(b.nom)}"></p>`;
       }).join("");
     });
     page("", `<a class="retour" href="#/cotes/${col}">‹ ${esc(M.LIBELLES_COLONNES[col])}</a><h2>${esc(e.nom)}</h2>
-      <p class="aide">Toutes les cases sont obligatoires : entrez une cote (de 0 au maximum indiqué) ou <b>-</b> si l'élève n'a pas étudié ce cours.</p>
+      <p class="aide">Toutes les cases sont obligatoires : entrez une cote (de 0 au maximum indiqué) ou <b>-</b> si le cours n'a pas été étudié (le tiret vaut pour <b>toute la classe</b> : le maximum est alors réduit sur les bulletins), ou <b>N</b> (bouton <b>NC</b>) s'il n'a pas de cote dans ce cours : il sera alors <b>non classé</b>.</p>
       <form id="f" novalidate>${html}<button class="btn" type="submit" data-suite="1">Enregistrer et passer au suivant</button><button class="btn second" type="submit">Enregistrer les cotes</button></form>`, "cotes");
-    // Le clavier numérique du téléphone n'a pas de tiret : ce bouton écrit (ou efface) « - » dans la case
+    // Le clavier numérique du téléphone n'a ni tiret ni lettres : ces boutons écrivent (ou effacent) « - » ou « NC » dans la case
     document.getElementById("f").addEventListener("click", (ev) => {
-      const b = ev.target.closest("button[data-tiret]");
+      const b = ev.target.closest("button[data-tiret], button[data-nc]");
       if (!b) return;
-      const inp = document.getElementById(b.dataset.tiret);
-      inp.value = inp.value.trim() === "-" ? "" : "-";
+      const nc = !!b.dataset.nc, inp = document.getElementById(nc ? b.dataset.nc : b.dataset.tiret);
+      const actuel = inp.value.trim().toUpperCase(), voulu = nc ? "NC" : "-";
+      inp.value = actuel === voulu || (nc && actuel === "N") ? "" : voulu;
       inp.focus();
     });
     document.getElementById("f").addEventListener("submit", (ev) => {
@@ -171,8 +176,14 @@
         if (msg) { erreurs++; premier = premier || inp; } else nouvelles[inp.dataset.b] = val;
       });
       if (erreurs) { toast(`${erreurs} case${erreurs > 1 ? "s" : ""} à corriger`); premier.focus(); return; }
+      const anciennes = JSON.stringify(e.notes || {}), avant = M.coursNonEtudies(c, eleves());
       e.notes = e.notes || {};
       for (const nom in nouvelles) (e.notes[nom] = e.notes[nom] || {})[col] = nouvelles[nom];
+      // Un tiret retire le cours pour TOUTE la classe : on demande confirmation la première fois (évite une faute de frappe).
+      const nouveaux = [...M.coursNonEtudies(c, eleves())].filter((k) => !avant.has(k)).map((k) => k.split("|")[0]);
+      if (nouveaux.length && !confirm(`Vous avez mis « - » pour : ${nouveaux.join(", ")}.\n\nCe cours sera considéré comme NON ÉTUDIÉ PAR TOUTE LA CLASSE (${M.LIBELLES_COLONNES[col]}) : il sera retiré du maximum de tous les élèves et le nouveau maximum apparaîtra sur les bulletins.\n\nContinuer ?`)) {
+        e.notes = JSON.parse(anciennes); return;
+      }
       if (sauver()) {
         const liste = eleves(), k = liste.indexOf(e) + 1;
         if (suite && k < liste.length) { toast("Cotes enregistrées"); aller("#/cotes/" + col + "/" + encodeURIComponent(liste[k].numero_perm)); }
