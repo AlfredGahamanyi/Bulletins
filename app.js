@@ -41,7 +41,7 @@
     if (!visibles.length) {
       page("Bulletins scolaires", `<h2>Aucune classe</h2><p class="aide">Aucune classe n'est associée à votre compte. Contactez l'administration.</p>` +
         (Auth.actif() ? `<button class="btn second" id="deco">Se déconnecter</button>` : ""), "");
-      const d = document.getElementById("deco"); if (d) d.addEventListener("click", () => { Auth.deconnexion(); rendre(); });
+      const d = document.getElementById("deco"); if (d) d.addEventListener("click", () => { Auth.deconnexion(); if (window.Synchro) Synchro.deconnecter(); rendre(); });
       return;
     }
     const options = [...new Set(visibles.map((c) => c.option))];
@@ -315,6 +315,7 @@
       <div class="carte"><b>Ma classe</b><small>${esc(c.nom_classe)} · ${esc(c.option)}</small></div>
       ${Auth.peutChanger(classes) ? '<button class="btn second" id="chg">Changer de classe</button>' : ""}
       ${Auth.actif() ? `<div class="carte"><b>Connecté</b><small>${esc((Auth.session() || {}).nom || "")}${Auth.session() && Auth.session().role === "admin" ? " · administrateur" : ""}</small></div><button class="btn second" id="deco">Se déconnecter</button>` : ""}
+      ${window.Synchro ? Synchro.carteHtml(etat.classe, eleves()) : ""}
       <details class="donnees"${donneesOuvertes ? " open" : ""}><summary>Mes données (changer de téléphone, copie de secours)</summary>
         <p class="aide">Vos élèves et vos cotes sont dans ce téléphone. Gardez une copie pour les retrouver si vous changez de téléphone ou si Chrome est réinitialisé.</p>${sauvegardeRecenteHtml()}
         <button class="btn second" id="envoi">Envoyer une copie (WhatsApp…)</button>
@@ -323,8 +324,9 @@
         <input type="file" id="fichier" accept=".json,.txt,application/json,text/plain" hidden>
         <button class="btn danger" id="prec">Annuler la dernière modification</button></details>
       <p class="aide" style="margin-top:20px;text-align:center">${esc(window.ETABLISSEMENT.nom)}<br>Chef d'établissement : ${esc(window.ETABLISSEMENT.chef_etablissement)}<br>Bulletins scolaires · fonctionne sans internet</p>`, "plus");
+    if (window.Synchro) Synchro.lier(() => ({ code: etat.classe, nom: c.nom_classe, eleves: eleves() }));
     const deco = document.getElementById("deco");
-    if (deco) deco.addEventListener("click", () => { if (confirm("Se déconnecter ?")) { Auth.deconnexion(); rendre(); } });
+    if (deco) deco.addEventListener("click", () => { if (confirm("Se déconnecter ?")) { Auth.deconnexion(); if (window.Synchro) Synchro.deconnecter(); rendre(); } });
     const chg = document.getElementById("chg");
     if (chg) chg.addEventListener("click", () => {
       if (!confirm("Changer de classe ? Les données de la classe actuelle sont conservées.")) return;
@@ -354,6 +356,7 @@
       const r = await Auth.connexion(document.getElementById("code").value);
       ok.disabled = false; ok.textContent = "Se connecter";
       if (!r.ok) { err.textContent = r.erreur; return; }
+      if (window.Synchro) Synchro.connecter(document.getElementById("code").value); // session en ligne (facultatif)
       toast("Connecté"); rendre();
     });
     const inv = document.getElementById("inv");
