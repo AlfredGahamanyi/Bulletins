@@ -36,6 +36,10 @@
   }
 
   // ---------- Choix de la classe (une seule fois)
+  // Lien vers la page d'administration : visible uniquement par les administrateurs, quand la transmission en ligne est activée.
+  const lienAdmin = () => (Auth.actif() && Auth.session() && Auth.session().role === "admin" && window.Synchro && Synchro.configOk()
+    ? `<a class="carte" href="admin.html" style="display:block;text-decoration:none;color:inherit"><b>Administration</b><small>Suivi en direct des classes · tableaux comparatifs en PDF</small></a>` : "");
+
   function vueChoix() {
     const visibles = Auth.classesAutorisees(classes);
     if (!visibles.length) {
@@ -45,7 +49,7 @@
       return;
     }
     const options = [...new Set(visibles.map((c) => c.option))];
-    const corps = `<h2>Quelle est votre classe ?</h2>
+    const corps = lienAdmin() + `<h2>Quelle est votre classe ?</h2>
       <p class="aide">Vous ne verrez que cette classe : vos cotes sont ainsi protégées contre toute modification par erreur dans une autre classe. Vous pourrez la changer plus tard dans « Ma classe ».</p>` +
       options.map((o) => `<h3>${esc(o)}</h3>` + visibles.filter((c) => c.option === o)
         .map((c) => `<button class="carte" data-classe="${esc(c.code)}"><b>${esc(c.nom_classe)}</b></button>`).join("")).join("");
@@ -314,7 +318,7 @@
     page("", `<h2>Plus</h2>
       <div class="carte"><b>Ma classe</b><small>${esc(c.nom_classe)} · ${esc(c.option)}</small></div>
       ${Auth.peutChanger(classes) ? '<button class="btn second" id="chg">Changer de classe</button>' : ""}
-      ${Auth.actif() ? `<div class="carte"><b>Connecté</b><small>${esc((Auth.session() || {}).nom || "")}${Auth.session() && Auth.session().role === "admin" ? " · administrateur" : ""}</small></div><button class="btn second" id="deco">Se déconnecter</button>` : ""}
+      ${Auth.actif() ? `<div class="carte"><b>Connecté</b><small>${esc((Auth.session() || {}).nom || "")}${Auth.session() && Auth.session().role === "admin" ? " · administrateur" : ""}</small></div>${lienAdmin()}<button class="btn second" id="deco">Se déconnecter</button>` : ""}
       ${window.Synchro ? Synchro.carteHtml(etat.classe, eleves()) : ""}
       <details class="donnees"${donneesOuvertes ? " open" : ""}><summary>Mes données (changer de téléphone, copie de secours)</summary>
         <p class="aide">Vos élèves et vos cotes sont dans ce téléphone. Gardez une copie pour les retrouver si vous changez de téléphone ou si Chrome est réinitialisé.</p>${sauvegardeRecenteHtml()}

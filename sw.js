@@ -1,6 +1,6 @@
 // Fonctionnement hors ligne : tous les fichiers de l'application sont gardés dans le téléphone.
 // À chaque nouvelle version de l'application, changer le numéro ci-dessous.
-const VERSION = "bulletins-2026-11-25-maj";
+const VERSION = "bulletins-2026-11-25-admin";
 const FICHIERS = ["./", "index.html", "style.css", "moteur.js", "etablissement.js", "bulletin_css.js",
   "bulletin_css_domaines.js", "bulletin_css_etat.js", "bulletin_css_cartouche.js", "bulletin.js", "acces.js", "auth.js", "firebase-config.js", "synchro.js", "app.js", "admin.html", "admin.js", "pdfmini.js", "tableaux.js",
   "classes.json", "drapeau.png", "embleme.png", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
